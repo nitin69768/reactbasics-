@@ -1,19 +1,20 @@
-usimport { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Dashboard from "./Dashboard";
+import LocalUserList from "./LocalUserList";
+import UserList from "./UserList";
+import FakePostList from "./FakePostList";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Count changed:", count);
-  }, [count]);
-
   return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>
-        Increase
-      </button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/local" element={<LocalUserList />} />
+        <Route path="/users" element={<UserList />} />
+        <Route path="/posts" element={<FakePostList />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
